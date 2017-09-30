@@ -1,0 +1,223 @@
+Building configuration...
+
+Current configuration : 5069 bytes
+!
+version 12.2
+no service pad
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+!
+hostname FR-BP-0-SW_ACC-1
+!
+!
+no aaa new-model
+ip subnet-zero
+!
+!
+!
+crypto pki trustpoint TP-self-signed-819080704
+ enrollment selfsigned
+ subject-name cn=IOS-Self-Signed-Certificate-819080704
+ revocation-check none
+ rsakeypair TP-self-signed-819080704
+!
+!         
+crypto pki certificate chain TP-self-signed-819080704
+ certificate self-signed 01
+  30820247 308201B0 A0030201 02020101 300D0609 2A864886 F70D0101 04050030 
+  30312E30 2C060355 04031325 494F532D 53656C66 2D536967 6E65642D 43657274 
+  69666963 6174652D 38313930 38303730 34301E17 0D393330 33303130 30303130 
+  355A170D 32303031 30313030 30303030 5A303031 2E302C06 03550403 1325494F 
+  532D5365 6C662D53 69676E65 642D4365 72746966 69636174 652D3831 39303830 
+  37303430 819F300D 06092A86 4886F70D 01010105 0003818D 00308189 02818100 
+  BDE55806 22C24390 287CEBE3 3F4D635A A38DE00D 180D186A C1113CED C25CE777 
+  2C3B911E 967FDCA6 F88F7067 661034A7 61FA3A21 5D0A7275 4170AE31 B41A9AA2 
+  E12C1D3C 4D3ED87C F14DC16C 91C3E567 6683DDCA EF8B4C95 36164110 38126B4C 
+  F6DC4FEB F5778DAC 3CE57BAA C2C52EFE 58D89B8B DB873573 37ABB6EB A603FCD9 
+  02030100 01A37130 6F300F06 03551D13 0101FF04 05300301 01FF301C 0603551D 
+  11041530 13821146 522D4250 2D302D53 575F4143 432D312E 301F0603 551D2304 
+  18301680 14F6FABE F1931ADB 79963817 64D0DDBD 645DE8DF D8301D06 03551D0E 
+  04160414 F6FABEF1 931ADB79 96381764 D0DDBD64 5DE8DFD8 300D0609 2A864886 
+  F70D0101 04050003 8181004C 830230AF CD00D623 2D0A7304 11C56904 AEAF4C3E 
+  B64FF3E5 C2446E7D 9EE482B3 238A0414 E95F43E6 5969433A D2B5E249 392FC41C 
+  061C4F08 1B3D6A19 D05C3A42 ED849BCB 40B8265D 2C6DDD36 FA58EA24 CE53C167 
+  77CD1330 53B6F11B 23AC2E66 F7AD37C7 0F3CF242 39B8C08C 14EAB605 A85E734B 
+  079166A7 C17C3C01 8CFF00
+  quit
+!         
+!
+spanning-tree mode pvst
+spanning-tree extend system-id
+!
+vlan internal allocation policy ascending
+!
+!
+! 
+!
+!
+!
+interface FastEthernet0/1
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 10,20,30,40,50,60
+ switchport mode trunk
+!
+interface FastEthernet0/2
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 10,20,30,40,50,60
+ switchport mode trunk
+!
+interface FastEthernet0/3
+ switchport access vlan 10
+ switchport mode access
+ spanning-tree portfast
+!
+interface FastEthernet0/4
+ switchport access vlan 10
+ switchport mode access
+ spanning-tree portfast
+!
+interface FastEthernet0/5
+ switchport access vlan 20
+ switchport mode access
+ spanning-tree portfast
+!
+interface FastEthernet0/6
+ switchport access vlan 20
+ switchport mode access
+ spanning-tree portfast
+!
+interface FastEthernet0/7
+ switchport access vlan 20
+ switchport mode access
+ spanning-tree portfast
+!         
+interface FastEthernet0/8
+ switchport access vlan 20
+ switchport mode access
+ spanning-tree portfast
+!
+interface FastEthernet0/9
+ switchport access vlan 30
+ switchport mode access
+ spanning-tree portfast
+!
+interface FastEthernet0/10
+ switchport access vlan 30
+ switchport mode access
+ spanning-tree portfast
+!
+interface FastEthernet0/11
+ switchport access vlan 30
+ switchport mode access
+ spanning-tree portfast
+!
+interface FastEthernet0/12
+ switchport access vlan 30
+ switchport mode access
+ spanning-tree portfast
+!
+interface FastEthernet0/13
+ switchport access vlan 40
+ switchport mode access
+ spanning-tree portfast
+!
+interface FastEthernet0/14
+ switchport access vlan 40
+ switchport mode access
+ spanning-tree portfast
+!
+interface FastEthernet0/15
+ switchport access vlan 40
+ switchport mode access
+ spanning-tree portfast
+!
+interface FastEthernet0/16
+ switchport access vlan 40
+ switchport mode access
+ spanning-tree portfast
+!
+interface FastEthernet0/17
+ switchport access vlan 50
+ switchport mode access
+ spanning-tree portfast
+!
+interface FastEthernet0/18
+ switchport access vlan 50
+ switchport mode access
+ spanning-tree portfast
+!
+interface FastEthernet0/19
+ switchport access vlan 50
+ switchport mode access
+ spanning-tree portfast
+!
+interface FastEthernet0/20
+ switchport access vlan 50
+ switchport mode access
+ spanning-tree portfast
+!
+interface FastEthernet0/21
+ switchport access vlan 60
+ switchport mode access
+ spanning-tree portfast
+!
+interface FastEthernet0/22
+ switchport access vlan 60
+ switchport mode access
+ spanning-tree portfast
+!
+interface FastEthernet0/23
+ switchport access vlan 60
+ switchport mode access
+ spanning-tree portfast
+!
+interface FastEthernet0/24
+ switchport access vlan 60
+ switchport mode access
+ spanning-tree portfast
+!
+interface GigabitEthernet0/1
+ switchport mode dynamic desirable
+!
+interface GigabitEthernet0/2
+ switchport mode dynamic desirable
+!
+interface Vlan1
+ no ip address
+ shutdown
+!
+interface Vlan10
+ ip address 172.17.0.5 255.255.255.0
+!
+interface Vlan20
+ no ip address
+!
+interface Vlan30
+ no ip address
+!
+interface Vlan40
+ no ip address
+!
+interface Vlan50
+ no ip address
+!
+interface Vlan60
+ no ip address
+!
+ip classless
+ip http server
+ip http secure-server
+!
+!
+!
+control-plane
+!
+!
+line con 0
+line vty 0 4
+ login
+line vty 5 15
+ login
+!
+end

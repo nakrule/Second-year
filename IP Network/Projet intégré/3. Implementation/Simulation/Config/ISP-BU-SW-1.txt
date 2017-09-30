@@ -1,0 +1,190 @@
+Building configuration...
+
+Current configuration : 4518 bytes
+!
+version 12.2
+no service pad
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+!
+hostname ISP-BU-SW-1
+!
+!
+no aaa new-model
+ip subnet-zero
+!
+!
+!
+crypto pki trustpoint TP-self-signed-819080320
+ enrollment selfsigned
+ subject-name cn=IOS-Self-Signed-Certificate-819080320
+ revocation-check none
+ rsakeypair TP-self-signed-819080320
+!
+!         
+crypto pki certificate chain TP-self-signed-819080320
+ certificate self-signed 01
+  30820242 308201AB A0030201 02020101 300D0609 2A864886 F70D0101 04050030 
+  30312E30 2C060355 04031325 494F532D 53656C66 2D536967 6E65642D 43657274 
+  69666963 6174652D 38313930 38303332 30301E17 0D393330 33303130 30303130 
+  335A170D 32303031 30313030 30303030 5A303031 2E302C06 03550403 1325494F 
+  532D5365 6C662D53 69676E65 642D4365 72746966 69636174 652D3831 39303830 
+  33323030 819F300D 06092A86 4886F70D 01010105 0003818D 00308189 02818100 
+  D3E9D4D4 D78D5369 1643E023 0AC243B0 2CB76E02 C2F808A2 4188806D 8DA35055 
+  ACCFEE89 1E4E4E28 AC00B1F6 951F7A72 895DC617 2C11341A 8416A953 ACEFB172 
+  7209078D 961CD82E BC5D5C5A 0A708C3D BFEF29BB 0DC051FA 5D89D96B 51F8476A 
+  F135BC3B 79635CF3 95D5F337 07B2C6B0 E8EE5AA6 3FA46990 5D2F5201 E9C2E1D9 
+  02030100 01A36C30 6A300F06 03551D13 0101FF04 05300301 01FF3017 0603551D 
+  11041030 0E820C49 53502D42 552D5357 2D312E30 1F060355 1D230418 30168014 
+  0A42648A 55DFF237 37D6C168 D6B76D30 979B0832 301D0603 551D0E04 1604140A 
+  42648A55 DFF23737 D6C168D6 B76D3097 9B083230 0D06092A 864886F7 0D010104 
+  05000381 81002462 2FC1F000 660B6B04 F6114CB4 AD188B6C C1CE755B D08A2E23 
+  B56CDB88 D38E76AA DA5C176D 5937B718 AA445DD2 776B4BB8 C5BACE96 09EDE63A 
+  68152C22 272B658B BAFE60F5 A08350BA A85EDC89 3BAB3AC6 A98E3986 9122F04F 
+  D8BB7689 E77E04BA D99F9A19 958807C2 28C79072 CDDACEA3 E4D08CC0 9C01DF5E 
+  4D47F472 046F
+  quit
+!         
+!
+spanning-tree mode pvst
+spanning-tree extend system-id
+!
+vlan internal allocation policy ascending
+!
+!
+! 
+!
+!
+!
+interface FastEthernet0/1
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 100,110
+ switchport mode trunk
+!
+interface FastEthernet0/2
+ switchport access vlan 100
+ switchport mode access
+ spanning-tree portfast
+!
+interface FastEthernet0/3
+ switchport access vlan 110
+ switchport mode access
+ spanning-tree portfast
+!
+interface FastEthernet0/4
+ switchport mode dynamic desirable
+ spanning-tree portfast
+!
+interface FastEthernet0/5
+ switchport mode dynamic desirable
+ spanning-tree portfast
+!
+interface FastEthernet0/6
+ switchport mode dynamic desirable
+ spanning-tree portfast
+!
+interface FastEthernet0/7
+ switchport mode dynamic desirable
+ spanning-tree portfast
+!
+interface FastEthernet0/8
+ switchport mode dynamic desirable
+ spanning-tree portfast
+!         
+interface FastEthernet0/9
+ switchport mode dynamic desirable
+ spanning-tree portfast
+!
+interface FastEthernet0/10
+ switchport mode dynamic desirable
+ spanning-tree portfast
+!
+interface FastEthernet0/11
+ switchport mode dynamic desirable
+ spanning-tree portfast
+!
+interface FastEthernet0/12
+ switchport mode dynamic desirable
+ spanning-tree portfast
+!
+interface FastEthernet0/13
+ switchport mode dynamic desirable
+ spanning-tree portfast
+!
+interface FastEthernet0/14
+ switchport mode dynamic desirable
+ spanning-tree portfast
+!
+interface FastEthernet0/15
+ switchport mode dynamic desirable
+ spanning-tree portfast
+!
+interface FastEthernet0/16
+ switchport mode dynamic desirable
+ spanning-tree portfast
+!
+interface FastEthernet0/17
+ switchport mode dynamic desirable
+ spanning-tree portfast
+!
+interface FastEthernet0/18
+ switchport mode dynamic desirable
+ spanning-tree portfast
+!
+interface FastEthernet0/19
+ switchport mode dynamic desirable
+ spanning-tree portfast
+!
+interface FastEthernet0/20
+ switchport mode dynamic desirable
+ spanning-tree portfast
+!
+interface FastEthernet0/21
+ switchport mode dynamic desirable
+ spanning-tree portfast
+!
+interface FastEthernet0/22
+ switchport mode dynamic desirable
+ spanning-tree portfast
+!
+interface FastEthernet0/23
+ switchport mode dynamic desirable
+ spanning-tree portfast
+!
+interface FastEthernet0/24
+ switchport mode dynamic desirable
+ spanning-tree portfast
+!
+interface GigabitEthernet0/1
+ switchport mode dynamic desirable
+!
+interface GigabitEthernet0/2
+ switchport mode dynamic desirable
+!
+interface Vlan1
+ no ip address
+ shutdown
+!
+interface Vlan100
+ no ip address
+!
+interface Vlan110
+ no ip address
+!
+ip classless
+ip http server
+ip http secure-server
+!
+!
+!
+control-plane
+!
+!
+line con 0
+line vty 0 4
+ login    
+line vty 5 15
+ login
+!
+end

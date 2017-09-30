@@ -1,0 +1,187 @@
+FR-BP-SS1-RT-1#sh run
+Building configuration...
+
+
+Current configuration : 2748 bytes
+!
+version 12.4
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+!
+hostname FR-BP-SS1-RT-1
+!
+boot-start-marker
+boot-end-marker
+!
+logging message-counter syslog
+!
+no aaa new-model
+!
+dot11 syslog
+ip source-route
+!
+!
+ip cef
+!
+!         
+ipv6 unicast-routing
+ipv6 cef  
+!         
+multilink bundle-name authenticated
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!         
+!
+voice-card 0
+!
+!
+!
+!
+!
+archive
+ log config
+  hidekeys
+! 
+!
+!
+!
+!
+!
+!
+!
+!
+interface Tunnel0
+ ip address 192.168.0.2 255.255.255.0
+ ipv6 address 2001:620:40B:9929::2/64
+ tunnel source FastEthernet0/0
+ tunnel destination 2001:620:40B:992F::1F
+ tunnel mode gre ipv6
+!
+interface FastEthernet0/0
+ ip address 172.17.240.10 255.255.255.252
+ duplex auto
+ speed auto
+ ipv6 address 2001:620:40B:992F::12/126
+ ipv6 ospf 10 area 0
+!
+interface FastEthernet0/1
+ no ip address
+ duplex auto
+ speed auto
+!
+interface FastEthernet0/1.10
+ encapsulation dot1Q 10
+ ip address 172.17.0.1 255.255.255.0
+ ipv6 address 2001:620:40B:9920::1/64
+ ipv6 ospf 10 area 1
+!
+interface FastEthernet0/1.20
+ encapsulation dot1Q 20
+ ip address 172.17.1.1 255.255.255.0
+ ipv6 address 2001:620:40B:9921::1/64
+ ipv6 ospf 10 area 1
+!
+interface FastEthernet0/1.30
+ encapsulation dot1Q 30
+ ip address 172.17.2.1 255.255.255.0
+ ipv6 address 2001:620:40B:9922::1/64
+ ipv6 ospf 10 area 1
+!
+interface FastEthernet0/1.40
+ encapsulation dot1Q 40
+ ip address 172.17.3.1 255.255.255.0
+ ipv6 address 2001:620:40B:9923::1/64
+ ipv6 ospf 10 area 1
+!
+interface FastEthernet0/1.50
+ encapsulation dot1Q 50
+ ip address 172.17.4.1 255.255.255.0
+ ipv6 address 2001:620:40B:9924::1/64
+ ipv6 ospf 10 area 1
+!
+interface FastEthernet0/1.60
+ encapsulation dot1Q 60
+ ip address 172.17.5.1 255.255.255.0
+ ipv6 address 2001:620:40B:9925::1/64
+ ipv6 ospf 10 area 1
+!
+interface Serial0/0/0
+ no ip address
+ shutdown
+ clock rate 2000000
+!
+interface Serial0/0/1
+ no ip address
+ shutdown
+ clock rate 2000000
+!
+router ospf 10
+ router-id 1.1.1.4
+ log-adjacency-changes
+ network 172.17.0.0 0.0.0.255 area 1
+ network 172.17.1.0 0.0.0.255 area 1
+ network 172.17.2.0 0.0.0.255 area 1
+ network 172.17.3.0 0.0.0.255 area 1
+ network 172.17.4.0 0.0.0.255 area 1
+ network 172.17.5.0 0.0.0.255 area 1
+ network 172.17.240.8 0.0.0.3 area 0
+!
+ip forward-protocol nd
+ip route 0.0.0.0 0.0.0.0 172.17.240.3
+no ip http server
+no ip http secure-server
+!
+!
+!
+ipv6 route 2001:620:40B:9926::/64 2001:620:40B:9929::1
+ipv6 route 2001:620:40B:9927::/64 2001:620:40B:9929::1
+ipv6 route 2001:620:40B:9928::/64 2001:620:40B:9929::1
+ipv6 route ::/0 2001:620:40B:992F::1B
+ipv6 router ospf 10
+ router-id 1.1.1.4
+ log-adjacency-changes
+!
+!
+!
+!
+!
+!         
+!
+control-plane
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+line con 0
+line aux 0
+line vty 0 4
+ login
+!
+scheduler allocate 20000 1000
+end

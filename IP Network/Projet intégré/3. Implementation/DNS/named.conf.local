@@ -1,0 +1,11 @@
+zone "fri-thinking.ch" IN {
+	type master;
+	file "/etc/bind/db.fri-thinking.ch.zone";
+	allow-update { none; };
+	notify yes;
+};
+zone "31.98.160.in-addr-arpa" IN {
+	type master;
+	file "/etc/bind/db.31.98.160.in-addr.zone";
+	allow-update { none; };
+};

@@ -1,0 +1,190 @@
+Building configuration...
+
+Current configuration : 3475 bytes
+!
+version 12.2
+no service pad
+service timestamps debug uptime
+service timestamps log uptime
+no service password-encryption
+!
+hostname FR-BP-SS1-SW_ACC-1
+!
+!
+no aaa new-model
+ip subnet-zero
+!
+!
+!
+!
+!
+!
+no file verify auto
+spanning-tree mode pvst
+spanning-tree extend system-id
+!         
+vlan internal allocation policy ascending
+!
+interface FastEthernet0/1
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 10,20,30,40,50,60
+ switchport mode trunk
+!
+interface FastEthernet0/2
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 10,20,30,40,50,60
+ switchport mode trunk
+!
+interface FastEthernet0/3
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 10,20,30,40,50,60
+ switchport mode trunk
+!
+interface FastEthernet0/4
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 50,60
+ switchport mode trunk
+!
+interface FastEthernet0/5
+ switchport access vlan 20
+ switchport mode access
+ spanning-tree portfast
+!
+interface FastEthernet0/6
+ switchport access vlan 20
+ switchport mode access
+ spanning-tree portfast
+!
+interface FastEthernet0/7
+ switchport access vlan 20
+ switchport mode access
+ spanning-tree portfast
+!
+interface FastEthernet0/8
+ switchport access vlan 20
+ switchport mode access
+ spanning-tree portfast
+!
+interface FastEthernet0/9
+ switchport access vlan 30
+ switchport mode access
+ spanning-tree portfast
+!
+interface FastEthernet0/10
+ switchport access vlan 30
+ switchport mode access
+ spanning-tree portfast
+!
+interface FastEthernet0/11
+ switchport access vlan 30
+ switchport mode access
+ spanning-tree portfast
+!
+interface FastEthernet0/12
+ switchport access vlan 30
+ switchport mode access
+ spanning-tree portfast
+!
+interface FastEthernet0/13
+ switchport access vlan 40
+ switchport mode access
+ spanning-tree portfast
+!
+interface FastEthernet0/14
+ switchport access vlan 40
+ switchport mode access
+ spanning-tree portfast
+!
+interface FastEthernet0/15
+ switchport access vlan 40
+ switchport mode access
+ spanning-tree portfast
+!
+interface FastEthernet0/16
+ switchport access vlan 40
+ switchport mode access
+ spanning-tree portfast
+!
+interface FastEthernet0/17
+ switchport access vlan 50
+ switchport mode access
+ spanning-tree portfast
+!
+interface FastEthernet0/18
+ switchport access vlan 50
+ switchport mode access
+ spanning-tree portfast
+!         
+interface FastEthernet0/19
+ switchport access vlan 50
+ switchport mode access
+ spanning-tree portfast
+!
+interface FastEthernet0/20
+ switchport access vlan 50
+ switchport mode access
+ spanning-tree portfast
+!
+interface FastEthernet0/21
+ switchport access vlan 60
+ switchport mode access
+ spanning-tree portfast
+!
+interface FastEthernet0/22
+ switchport access vlan 60
+ switchport mode access
+ spanning-tree portfast
+!
+interface FastEthernet0/23
+ switchport access vlan 60
+ switchport mode access
+ spanning-tree portfast
+!
+interface FastEthernet0/24
+ switchport access vlan 60
+ switchport mode access
+ spanning-tree portfast
+!
+interface GigabitEthernet0/1
+ switchport mode dynamic desirable
+!
+interface GigabitEthernet0/2
+ switchport mode dynamic desirable
+!
+interface Vlan1
+ no ip address
+ shutdown
+!
+interface Vlan10
+ ip address 172.17.0.3 255.255.255.0
+!
+interface Vlan20
+ no ip address
+!         
+interface Vlan30
+ no ip address
+!
+interface Vlan40
+ no ip address
+!
+interface Vlan50
+ no ip address
+!
+interface Vlan60
+ no ip address
+!
+ip classless
+ip http server
+ip http secure-server
+!
+!
+control-plane
+!
+!
+line con 0
+line vty 0 4
+ no login 
+line vty 5 15
+ no login
+!
+end

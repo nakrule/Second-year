@@ -1,0 +1,151 @@
+ISP-POP-BU-RT-1#sh run
+Building configuration...
+
+
+Current configuration : 1640 bytes
+!
+version 12.4
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+!
+hostname ISP-POP-BU-RT-1
+!
+boot-start-marker
+boot-end-marker
+!
+logging message-counter syslog
+!
+no aaa new-model
+!
+dot11 syslog
+ip source-route
+!
+!
+ip cef
+!
+!         
+ipv6 unicast-routing
+ipv6 cef
+!
+multilink bundle-name authenticated
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!         
+!
+!
+!
+!
+voice-card 0
+!
+!
+!
+!
+!
+archive
+ log config
+  hidekeys
+! 
+!
+!
+!
+!
+pseudowire-class tunnel
+ encapsulation l2tpv3
+ protocol none
+ ip local interface FastEthernet0/1.920
+!         
+!
+!
+!
+!
+interface FastEthernet0/0
+ no ip address
+ duplex auto
+ speed auto
+ xconnect 172.17.240.1 1 encapsulation l2tpv3 manual pw-class tunnel
+  l2tp id 1 2
+!
+interface FastEthernet0/1
+ no ip address
+ duplex auto
+ speed auto
+!
+interface FastEthernet0/1.920
+ encapsulation dot1Q 920
+ ip address 172.17.240.2 255.255.255.248
+ ipv6 address 2001:620:40B:992F::1A/126
+ ipv6 ospf 10 area 0
+!
+interface FastEthernet0/1.940
+ encapsulation dot1Q 940
+ ipv6 address 2001:620:40B:992F::1D/126
+ ipv6 ospf 10 area 0
+!
+interface Serial0/0/0
+ no ip address
+ shutdown
+ clock rate 2000000
+!
+interface Serial0/0/1
+ no ip address
+ shutdown
+ clock rate 2000000
+!
+router ospf 10
+ router-id 1.1.1.2
+ log-adjacency-changes
+ network 172.17.240.0 0.0.0.7 area 0
+!
+ip forward-protocol nd
+ip route 0.0.0.0 0.0.0.0 172.17.240.3
+no ip http server
+no ip http secure-server
+!
+!
+!
+ipv6 route ::/0 2001:620:40B:992F::1B
+ipv6 router ospf 10
+ router-id 1.1.1.2
+ log-adjacency-changes
+!
+!
+!
+!
+!
+!
+!
+control-plane
+!
+!
+!
+!
+!
+!
+!
+!         
+!
+!
+line con 0
+line aux 0
+line vty 0 4
+ login
+!
+scheduler allocate 20000 1000
+end

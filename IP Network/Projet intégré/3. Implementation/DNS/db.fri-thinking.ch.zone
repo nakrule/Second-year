@@ -1,0 +1,16 @@
+;
+; BIND data file for local loopback interface
+;
+$TTL    604800
+@   IN  SOA ns.fri-thinking.ch. webmaster.fri-thinking.ch. (
+                  5     ; Serial
+             604800     ; Refresh
+              86400     ; Retry
+            2419200     ; Expire
+             604800 )   ; Negative Cache TTL
+;
+@   IN  NS  ns.fri-thinking.ch.
+;
+@   IN  A   160.98.31.222
+;
+ns  IN  A   160.98.31.222
